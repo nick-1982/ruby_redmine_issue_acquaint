@@ -1,0 +1,16 @@
+  <h3 class="title"><%= l(:add_issue_acquaints) %></h3>
+
+<%= form_tag(add_acquaints_path(issue: issue),
+             :remote => true,
+             :method => :post,
+             :id => 'new-acquaint-form') do %>
+
+  <div id="users_for_watcher">
+    <%= principals_check_box_tags('[user_ids][]', users) %>
+  </div>
+
+  <p class="buttons">
+    <%= submit_tag l(:button_add), :name => nil, :onclick => "hideModal(this);" %>
+    <%= submit_tag l(:button_cancel), :name => nil, :onclick => "hideModal(this);", :type => 'button' %>
+  </p>
+<% end %>

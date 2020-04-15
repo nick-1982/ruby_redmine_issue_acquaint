@@ -1,0 +1,30 @@
+<% if @issue %>
+  <% if @issue.author == User.current %>
+    <div class="contextual">
+      <%= link_to l(:button_add) ,
+          new_acquaints_path({issue: @issue, project: @project}),
+          :remote => true,
+          :method => 'get' %>
+    </div>
+  <% end %>
+  <h3><%= l(:label_issue_acquaints) %> </h3>
+  <div id="acquaint_list">
+   <ul class="" id="acquaint_ul">
+    <% for acquaint in acquaints -%>
+      <% if acquaint.issue.id == @issue.id %>
+       <li><%= check_box_tag "#{acquaint.id}", "", acquaint.status?,
+         disabled: User.current.id!=acquaint.user.id || acquaint.status? ? true : false,
+         class: "acquaint_box",
+         data: { remote: true, url: create_acquaint_path(acquaint.id), method: :get } %>
+         <%= label_tag acquaint.user.firstname, nil, class: "acquaint_label",
+          style: acquaint.status? ? "text-decoration: line-through;" : "" %>
+         <% if @issue.author == User.current %>
+          <%= link_to nil, destroy_acquaint_path(acquaint.id), method: :delete, remote: true,
+            class: "delete icon-only icon-del" %>
+         <% end %>
+       </li>
+      <% end %>
+    <% end -%>
+   </ul>
+  </div>
+<% end %>

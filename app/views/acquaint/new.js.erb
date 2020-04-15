@@ -1,0 +1,3 @@
+$('#ajax-modal').html('<%= escape_javascript(render :partial => 'acquaint/new', :locals => {:users => @context[:users], :issue => @context[:issue]}) %>');
+showModal('ajax-modal', '400px');
+$('#ajax-modal').addClass('new-watcher');
