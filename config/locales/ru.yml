@@ -14,3 +14,6 @@ ru:
   label_issue_acquaints: Ознакомление
   add_issue_acquaints: Добавление ознакомления
   field_acquaint: Ознакомление
+  field_acquaint_journal: ознакомлен
+  field_add_acquaint_journal: добавил в ознакомление
+  field_remove_acquaint_journal: удалил из ознакомления
