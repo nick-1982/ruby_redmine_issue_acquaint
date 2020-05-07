@@ -1,7 +1,7 @@
 require 'redmine'
 require_dependency 'acquaint_hook_listener'
 
-Redmine::Plugin.register :uplugin do
+Redmine::Plugin.register :ruby_redmine_issue_acquaint do
   name 'Uplugin plugin'
   author 'Nick'
   description 'This is a plugin for Redmine'
