@@ -33,6 +33,13 @@ class AcquaintController < ApplicationController
           prop_key: 'acquaint',
           value:    "#{User.current.name} #{l(:field_add_acquaint_journal)} #{acquaint.user.name}")
         journal.valid? ? journal.save : nil
+	if Watcher.where(:watchable_type => 'Issue', :watchable => issue, :user => user).empty?
+	  watcher = Watcher.new
+	  watcher.watchable_type = 'Issue'
+	  watcher.watchable = issue
+	  watcher.user = user
+	  watcher.valid? ? watcher.save : nil
+	end
       end
     end
 
